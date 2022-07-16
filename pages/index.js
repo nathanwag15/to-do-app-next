@@ -4,7 +4,18 @@ import styles from "../styles/Home.module.scss";
 import Moment from "react-moment";
 import moment from "moment";
 
+import React, { useState } from "react";
+
 export default function Home() {
+  const [dailyTasks, setDailyTasks] = useState([
+    "eat chicken ",
+    "eat chicken ",
+    "eat chicken ",
+    "eat chicken ",
+  ]);
+  const taskLister = dailyTasks.map((item) => {
+    return <ul>{item}</ul>;
+  });
   const current = new Date();
   const currentDate = moment().format("dddd, MMM Do YY");
   const tomorrowDate = moment().add(1, "days").calendar("dddd");
@@ -21,13 +32,7 @@ export default function Home() {
           <div className="day-title text-xl text-medium-blue">
             {currentDate}
           </div>
-          <div className="day-todo-list">
-            <div>eat chicken</div>
-            <div>eat chicken</div>
-            <div>eat chicken</div>
-            <div>eat chicken</div>
-            <div>eat chicken</div>
-          </div>
+          <div className="day-todo-list">{taskLister}</div>
         </div>
         <div className="day-wrapper border-2 border-solid border-dark-blue">
           <div className="day-title text-2xl text-medium-blue">

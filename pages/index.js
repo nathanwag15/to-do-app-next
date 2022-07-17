@@ -3,19 +3,24 @@ import Image from "next/image";
 import styles from "../styles/Home.module.scss";
 import Moment from "react-moment";
 import moment from "moment";
+import DisplayTaskList from "../components/displaytaskList";
 
 import React, { useState } from "react";
 
 export default function Home() {
-  const [dailyTasks, setDailyTasks] = useState([
-    "eat chicken ",
-    "eat chicken ",
-    "eat chicken ",
-    "eat chicken ",
+  const [dailyTasksToday, setDailyTasksToday] = useState([
+    "eat chicken",
+    "eat chicken",
+    "eat chicken",
+    "eat chicken",
   ]);
-  const taskLister = dailyTasks.map((item) => {
-    return <ul>{item}</ul>;
-  });
+
+  const [dailyTasksTomorrow, setDailyTasksTomorrow] = useState([
+    "eat ham",
+    "eat ham",
+    "eat ham",
+  ]);
+
   const current = new Date();
   const currentDate = moment().format("dddd, MMM Do YY");
   const tomorrowDate = moment().add(1, "days").calendar("dddd");
@@ -24,6 +29,7 @@ export default function Home() {
   const fiveDayDate = moment().add(2, "days").calendar("dddd");
   const sixDayDate = moment().add(2, "days").calendar("dddd");
   const sevenDayDate = moment().add(2, "days").calendar("D");
+
   return (
     <div className=" week-page-wrapper bg-white">
       <div className="text-3xl font-bold text-dark-blue">Week in Review</div>
@@ -32,18 +38,14 @@ export default function Home() {
           <div className="day-title text-xl text-medium-blue">
             {currentDate}
           </div>
-          <div className="day-todo-list">{taskLister}</div>
+          <DisplayTaskList task={dailyTasksToday} />
         </div>
         <div className="day-wrapper border-2 border-solid border-dark-blue">
           <div className="day-title text-2xl text-medium-blue">
             {tomorrowDate}
           </div>
           <div className="day-todo-list">
-            <div>eat chicken</div>
-            <div>eat chicken</div>
-            <div>eat chicken</div>
-            <div>eat chicken</div>
-            <div>eat chicken</div>
+            <DisplayTaskList task={dailyTasksTomorrow} />
           </div>
         </div>
         <div className="day-wrapper border-2 border-solid border-dark-blue">
@@ -51,11 +53,7 @@ export default function Home() {
             {threeDayDate}
           </div>
           <div className="day-todo-list">
-            <div>eat chicken</div>
-            <div>eat chicken</div>
-            <div>eat chicken</div>
-            <div>eat chicken</div>
-            <div>eat chicken</div>
+            <DisplayTaskList task={dailyTasksToday} />
           </div>
         </div>
         <div className="day-wrapper border-2 border-solid border-dark-blue">
@@ -63,11 +61,7 @@ export default function Home() {
             {fourDayDate}
           </div>
           <div className="day-todo-list">
-            <div>eat chicken</div>
-            <div>eat chicken</div>
-            <div>eat chicken</div>
-            <div>eat chicken</div>
-            <div>eat chicken</div>
+            <DisplayTaskList task={dailyTasksToday} />
           </div>
         </div>
         <div className="day-wrapper border-2 border-solid border-dark-blue">
@@ -75,11 +69,7 @@ export default function Home() {
             {fiveDayDate}
           </div>
           <div className="day-todo-list">
-            <div>eat chicken</div>
-            <div>eat chicken</div>
-            <div>eat chicken</div>
-            <div>eat chicken</div>
-            <div>eat chicken</div>
+            <DisplayTaskList task={dailyTasksToday} />
           </div>
         </div>
         <div className="day-wrapper border-2 border-solid border-dark-blue">
@@ -87,11 +77,7 @@ export default function Home() {
             {sixDayDate}
           </div>
           <div className="day-todo-list">
-            <div>eat chicken</div>
-            <div>eat chicken</div>
-            <div>eat chicken</div>
-            <div>eat chicken</div>
-            <div>eat chicken</div>
+            <DisplayTaskList task={dailyTasksToday} />
           </div>
         </div>
         <div className="day-wrapper border-2 border-solid border-dark-blue">
@@ -99,11 +85,7 @@ export default function Home() {
             {sevenDayDate}
           </div>
           <div className="day-todo-list">
-            <div>eat chicken</div>
-            <div>eat chicken</div>
-            <div>eat chicken</div>
-            <div>eat chicken</div>
-            <div>eat chicken</div>
+            <DisplayTaskList task={dailyTasksToday} />
           </div>
         </div>
       </div>
